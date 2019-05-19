@@ -1,0 +1,78 @@
+<title>TigerTravel - Find Me a Ride!</title>
+{% extends "tigertravel/base.html" %}
+{% block content %}
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="booking-cta">
+							<h1></h1>
+							<p></p>
+						</div>
+					</div>
+					<div class="col-md-7 col-md-offset-1">
+						<div class="booking-form">
+							<form method="POST" class="validate-form">
+								{% csrf_token %}
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group validate-input">
+											<span class="form-label">From</span>
+											<select name="origin" class="form-control" required id="id_origin">
+												<option value="PRINCETON">PRINCETON</option>
+												<option value="EWR">EWR</option>
+												<option value="JFK">JFK</option>
+												<option value="PHL">PHL</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group validate-input">
+											<span class="form-label">To</span>
+											<select name="destination" class="form-control" required id="id_destination">
+												<option value="PRINCETON">PRINCETON</option>
+												<option value="EWR">EWR</option>
+												<option value="JFK">JFK</option>
+												<option value="PHL">PHL</option>
+											</select>
+										</div>
+									</div>
+									
+								</div>
+								<div class="row">
+										<div class="col-md-4">
+											<div class="form-group validate-input">
+												<span class="form-label">Date</span>
+												<input name="date" class="form-control" type="date" required id="id_date">
+											</div>
+										</div>
+									<div class="col-md-4">
+										<div class="form-group validate-input">
+											<span class="form-label">Start Time</span>
+											<input name="start_time" class="form-control" type="time" required id="id_start_time">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<span class="form-label validate-input">End Time</span>
+											<input name="end_time" class="form-control" type="time" required id="id_end_time">
+										</div>
+									</div>
+									
+								</div>
+															
+								<div class="form-btn">
+									<button class="submit-btn" type="submit">Submit Request &nbsp <i class="fas fa-check-circle"></i></button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementById('home').classList.add('active');
+	</script>
+{% endblock content %}

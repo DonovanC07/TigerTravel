@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'tigertravel/stylesheet.css' %}">
+	<link rel="icon" type="image/png" href="{% static 'tigertravel/images/icons/favicon.ico' %}">
+
+	<link rel="apple-touch-icon" sizes="128x128" href="{% static 'tigertravel/images/homescreen.ico' %}">
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Helvetica:400,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static 'tigertravel/css/style.css' %}" />
+
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css">
+
+
+  
+
+  
+</head>
+
+
+
+{% if title %}
+
+<title>TigerTravel - {{ title }}</title>
+
+{% else %}
+
+<title>TigerTravel</title>
+
+{% endif %}
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-light bg-light static-top hidden-md-down w3-hide-small" style = "position:fixed; top:0; width:100%; z-index: 100">
+		
+		<a class="navbar-brand" href="{% url 'tigertravel-login' %}"><img style="width: 200px;" src="{% static 'tigertravel/images/trans.png' %}" alt="Logo"></a> 
+		<ul>
+			<li><a href="{% url 'tigertravel-home' %}" id="home">Find a Ride &nbsp <i class="far fa-hand-point-right"></i></a></li>
+			<li><a href="{% url 'tigertravel-profile' %}" id="profile">My Profile &nbsp <i class="fas fa-user"></i></a></li>
+		</ul>
+	</nav>
+
+ <nav class="navbar navbar-light bg-light static-top w3-hide-large w3-hide-medium" style = "position:fixed; top:0; width:100%; z-index: 100" >
+      <a class="navbar-brand" href="{% url 'tigertravel-login' %}"><img style="width: 150px;" src="{% static 'tigertravel/images/trans.png' %}" alt="Logo"></a>
+
+      <div class="w3-dropdown-click">
+      <button class="w3-button" onclick="openNav()">
+        <i style="color: #ff8f00" class="fas fa-bars"></i>
+      </button>
+      <div id="demo" class="sidenav">
+      	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i style="color: #ff8f00" class="fas fa-times"></i></a>
+        <a href="{% url 'tigertravel-home' %}" id="home" class="w3-bar-item w3-button">Find a Ride</a>
+        <a href="{% url 'tigertravel-profile' %}" id="profile" class="w3-bar-item w3-button">My Profile</a>
+      
+      </div>
+    </div>
+	<script>
+	function drop() {
+	  var x = document.getElementById("demo");
+	  if (x.className.indexOf("w3-show") == -1) {
+	    x.className += " w3-show";
+	  } else { 
+	    x.className = x.className.replace(" w3-show", "");
+	  }
+	}
+
+	function openNav() {	
+	    demo.style.width = "50%";
+	}
+	function closeNav() {
+		demo.style.width = "0";
+	}
+</script>
+  </nav>
+
+	<div style="margin-top:67px">
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-danger" role="alert" style="margin:0; border-radius:30px">
+			{{ message }}
+		</div>
+		{% endfor %}
+		{% endif%}
+
+
+		{% block content %}{% endblock %}
+	</div>
+
+</body>
+
+</html>

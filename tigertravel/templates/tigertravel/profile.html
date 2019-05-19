@@ -1,0 +1,166 @@
+<title>TigerTravel - My Profile</title>
+{% extends "tigertravel/base.html" %}
+{% block content %}
+<div id="prof" class="content-section">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    var name= "{{ user.profile.get_display_id }}";
+    $(function(){
+     $('#prof').find('img').each(function(){
+       var srcpath = $(this).attr('src');
+       srcpath = srcpath.replace('name',name);
+       $(this).attr('src',srcpath);
+     });
+   });
+ </script>
+ <hr>
+ <div class="container bootstrap snippet">
+  <div class="row">
+    <div class="col-sm-3">
+      <center><img class="rounded-circle account-img" style="width:148px;height:190px" src="https://tigerbook.herokuapp.com/images/name"></div></center>
+
+
+      <div class = "col-sm-9">
+        <br>
+        <br>
+        <h2 class = welcome>
+        Welcome Back, {{ user.person.name }}!</h2>
+
+
+      </br>
+      </br>
+
+        <h2 class = requests>
+        <i class="fas fa-car-alt"></i> &nbsp My Trips &nbsp </h2>
+      </div>
+    </div>
+  </br>
+  <div class="row">
+    <div class="col-sm-3 w3-hide-small"><!--left col-->
+
+      <ul class="list-group">
+        <li class="list-group-item text-muted">Profile</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong>Name</br></strong></span> {{ user.person.name }}</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong>Residential College</br></strong></span> {{ user.person.college }} </li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong>Class Year</br></strong></span> {{ user.person.year }}</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong>TigerBook &nbsp <a href = "{{ user.person.tigerlink }}" target="_blank"><i style="color: blue" class="fas fa-link"></i></a></br></strong></span></li>
+
+      </ul> 
+
+
+  </div><!--/col-3-->
+
+  <div class="col-sm-9 w3-hide-large w3-hide-medium">
+
+    <div class="row">
+      <div class="col">
+      
+                   
+                    
+                      {% for post in object_list %}
+
+
+                      {% if post.person == user %}
+                     
+                      <div class ="container" style="background-color: #ffc796; text-align: center; border:1px solid #d8780a; border-radius: 10px;">
+
+                        <h1 style="font-size:15px; padding-top: 5px"> {{ post.origin }}&nbsp;<i class="fas fa-arrow-right"></i>&nbsp;{{ post.destination }} on {{ post.date|date:"F d, Y" }}</h1> 
+                        Departure Timeframe: {{ post.group_set.first.start_time }} - {{ post.group_set.first.end_time }}
+                      </br>
+                        
+
+                        {% if post.group_set.first.size == '1' %}
+                        <p><a href="{% url 'group-detail' post.group_set.first.id %}" style="text-decoration: underline;"><font color="red">No other students have joined this trip yet. Tap for details.</font></a></p>
+
+                        {% else %}
+                        <p><a href="{% url 'group-detail' post.group_set.first.id %}" style="text-decoration: underline;"><font color="blue">Currently in a group of {{ post.group_set.first.size}} total members. Tap for details.</font></a></p>
+
+                        {% endif %}
+                            
+                        
+                    
+                      </div>
+                      {% endif %}
+                      <center>
+
+
+
+
+                      <p></p>
+                      {% endfor %}
+                    
+                  </div>
+             </div>
+
+  </div><!--/col-9-->
+
+  <div class="col-sm-9 w3-hide-small">
+
+    <div class="row">
+      <div class="col">
+        <div class="col">
+          <div class="col">
+            <div class="col">
+              <div class="col">
+               <div class="col">
+                 <div class="col">
+                   <div class="scroller">
+                    
+                      {% for post in object_list %}
+
+                      {% if post.person == user %}
+                      <div class ="container" style="background-color: #ffc796; text-align: center; border:1px solid #d8780a; border-radius: 10px;">
+
+                        <h1 style="font-size:15px; padding-top: 5px"> {{ post.origin }}&nbsp;<i class="fas fa-arrow-right"></i>&nbsp;{{ post.destination }} on {{ post.date|date:"F d, Y" }}</h1> 
+                        Departure Timeframe: {{ post.group_set.first.start_time }} - {{ post.group_set.first.end_time }}
+                      </br>
+                        
+                        {% if post.group_set.first.size == '1' %}
+                        <p><a href="{% url 'group-detail' post.group_set.first.id %}" style="text-decoration: underline;"><font color="red">No other students have joined this trip yet. Click for details.</font></a></p>
+
+                        {% else %}
+                        <p><a href="{% url 'group-detail' post.group_set.first.id %}" style="text-decoration: underline;"><font color="blue">Currently in a group of {{ post.group_set.first.size}} total members. Click for details.</font></a></p>
+
+                        {% endif %}
+                            
+                        
+                    
+                      </div>
+                      {% endif %}
+                      <center>
+
+
+
+
+                      <p></p>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!--/col-9-->
+</div><!--/row-->
+<script>
+                          function myFunction() {
+  var txt;
+  if (confirm("Are you sure you want to delete this request?")) {
+    document.getElementById("delete_request").submit();;
+  } else {
+    
+  }
+}
+                        </script>
+<script type="text/javascript">
+    document.getElementById('profile').classList.add('active');
+  </script>
+{% endblock content %}

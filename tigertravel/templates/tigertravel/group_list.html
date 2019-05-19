@@ -1,0 +1,55 @@
+<title>TigerTravel - Group Listings</title>
+{% extends "tigertravel/base.html" %}
+{% block content %}
+	{% for object in object_list %}
+	</br>
+
+		<div class="row">
+		<div class="col"></div>
+  	   <div class="col-6">
+  	   	<center>
+  	   		
+
+  	   		<div class ="container" style="background-color: #ffc796; border-radius: 10px;">
+
+  	   		</br>
+			<p><h1 style="font-size:20px;">{{ object.origin }}&nbsp;<i class="fas fa-arrow-right"></i>&nbsp;{{ object.destination }} </h1></p>
+			<h1 style="font-size:20px;">{{ object.date|date:"F d, Y" }}</h1>
+		
+			<p>Departure Timeframe: {{ object.start_time }} - {{ object.end_time }}</p>
+	
+			<p>Group: {% for member in object.members.all %} {{ member.name }} &nbsp {% endfor %}</p>
+			<p>{% for member in object.members.all %} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a id="2{{ member.person.profile.get_display_id }}" href="{{ member.person.person.tigerlink }}" target="_blank"><img id="{{ member.person.profile.get_display_id}}{{ object.date }}" class="rounded-circle" style="width:50px;height:65px" src="{{ member.person.person.piclink }}"></a>
+			<script>
+				var name{{ member.person.profile.get_display_id }} = "{{ member.person.profile.get_display_id }}"; 
+		    	$(function(){
+		       	$('#{{ member.person.profile.get_display_id }}').each(function(){
+		           var srcpath = $(this).attr('src');
+		           srcpath = srcpath.replace('name',name{{ member.person.profile.get_display_id }});
+		           $(this).attr('src',srcpath);
+		       		});
+		   		});
+		   		$(function(){
+		       	$('#2{{ member.person.profile.get_display_id }}{{ object.date }}').each(function(){
+		           var hrefpath = $(this).attr('href');
+		           hrefpath = hrefpath.replace('name2',name{{ member.person.profile.get_display_id }});
+		           $(this).attr('href',hrefpath);
+		       		});
+		   		});
+		   		
+			</script>	
+	 		{% endfor %}</p>
+	 	
+	 	</br>
+		</div>
+		</center>
+		</div>
+		<div class="col"></div>	
+		</div>
+	
+	{% endfor %}
+	<script type="text/javascript">
+		document.getElementById('groups').classList.add('active');
+	</script>
+{% endblock content %}

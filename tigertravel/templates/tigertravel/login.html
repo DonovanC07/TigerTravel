@@ -1,0 +1,352 @@
+{% load static %} 
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+ 
+  <title>Welcome to TigerTravel!</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> 
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'login/vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css"> 
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'login/css/landing-page.min.css' %}" rel="stylesheet"> 
+  <link href="{% static 'tigertravel/stylesheet.css' %}" rel="stylesheet">
+   <link rel="icon" type="image/png" href="{% static 'tigertravel/images/homescreen.ico' %}"/>
+  
+  <style>
+    @bg: #2d2d37; // Dark blue
+    @primary: #fd6b21; // Orange
+
+    body { background: @bg;}
+    a { color: white; text-decoration: none; }
+
+    .arrow {
+      text-align: center;
+      margin: 8% 0;
+    }
+    .bounce {
+      -moz-animation: bounce 2s infinite;
+      -webkit-animation: bounce 2s infinite;
+      animation: bounce 3s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-30px);
+      }
+      60% {
+        transform: translateY(-15px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top w3-hide-small" style = "position:fixed; top:0; width:100%; z-index: 100" >
+      <a class="navbar-brand" href="{% url 'tigertravel-login' %}"><img style="   width: 200px;" src="{% static 'tigertravel/images/trans.png' %}" alt="Logo"></a>
+      <a class="btn btn-primary" style="background-color:#ff8f00;border:none" href="{% url 'tigertravel-home' %}">Continue with CAS</a>
+  </nav> 
+  <!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top w3-hide-large w3-hide-medium" style = "position:fixed; top:0; width:100%; z-index: 100" >
+      <a class="navbar-brand" href="{% url 'tigertravel-login' %}"><img style="   width: 150px;" src="{% static 'tigertravel/images/trans.png' %}" alt="Logo"></a>
+      <a class="btn btn-primary" style="background-color:#ff8f00;border:none" href="{% url 'tigertravel-home' %}">Continue with CAS</a>
+  </nav>
+
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+        </br>
+          <h1 class="mb-5">Welcome to TigerTravel!</h1>
+          </br>
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4 mx-auto">
+          <a class="btn btn-block btn-lg btn-primary" style="background-color:#ff8f00;border:none" href="{% url 'tigertravel-home' %}">Find Me Some Travellers &nbsp &nbsp<i class="fas fa-arrow-circle-right"></i></a></br>
+          <br>
+           <a class="btn btn-primary" style="background-color:#ff8f00;border:none" href="#Tutorial">Click Here For A Short Tutorial!<i ></i></a></br>
+
+        </div>
+      </div>
+      
+      <div class="arrow bounce">
+        <a class="fa fa-arrow-down fa-2x" ></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Icons Grid -->
+  <section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+             <div class="features-icons-icon d-flex">
+              <i class="fas fa-car m-auto" style="color:#ff8f00;"></i>
+            </div>
+            <h3 style="font-size: 24px">Effortless Matching</h3>
+            <p class="lead mb-0">Our algorithm will pair you with Princeton students going to and from the same locations.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="fas fa-check-circle m-auto" style="color:#ff8f00;"></i>
+            </div>
+            <h3 style="font-size: 24px">Easy to Use</h3>
+            <p class="lead mb-0">Control your trip requests with ease and receieve email notifications for updates!</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="fas fa-comments m-auto" style="color:#ff8f00;"></i>
+            </div>
+            <h3 style="font-size: 24px">Group Chat</h3>
+            <p class="lead mb-0">Chat with your TigerTravel group members for fast and easy communication.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id='Tutorial' class="testimonials text-center bg-light">
+                        <h3> Step-by-Step Guide </h3>
+                        <div class="row">
+          
+                            
+                        </div>
+                    </section>
+
+  <div class="w3-hide-small">
+
+  
+
+
+   <section id='Landing_Page' class="testimonials text-center">
+
+                        <br>
+                        <div class="row">
+          
+                          
+
+                            <div id=images class="col-sm-6">
+                                  <img src = "{% static 'login/img/Landing_Page.png' %}" alt="" style="width: 100%; height: 100%;">
+                            </div>
+                           <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+          
+                          <h2>Easy Login!</h2>
+                          <p class="lead mb-0"> If you have not logged in before, use the "Continue With CAS" button to automatically create your profile with TigerTravel! If you have used TigerTravel before, you can simply click on "Find Me Some Travellers" and find your group!</p>
+                        </div>
+                          </div>
+                    </section>
+
+<section id='Form_Filling' class="testimonials text-center bg-light">
+              
+                        <br>
+                        <div class="row">
+                         <div class="col-lg-6 my-auto showcase-text">
+                          <h2>Fill Out Your TigerTravel Form!</h2>
+                          <p class="lead mb-0">Finding a group is easy as ever. Fill out the form with a your Origin and Destination, your date of travel, and a departure timeframe that you are comfortable with, and we'll do the rest! You will instantly be notified by email about your group status! </p>
+                        </div>
+
+                              <div id=images class="col-sm-6">
+                                  <img src = "{% static 'login/img/Form_Filling.png' %}" alt="" style="width: 100%; height: 100%;">
+                            </div>
+                                                    </div>
+                    </section>
+
+    <section id='Group_Chat' class="testimonials text-center">
+                     
+                        <br>
+                        <div class="row">
+                              <div id=images class="col-sm-6">
+                                  <img src = "{% static 'login/img/Group_Chat.png' %}" alt="" style="width: 100%; height: 100%;">
+                            </div>
+                            <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                              <h2>Look at your Group Page!</h2>
+                              <p class="lead mb-0">On your group page you have all the information you need. Use our simple chat feature to communicate with your group members, and if you no longer want to be part of this trip, simply click "Leave Group" and your trip will be deleted!</p>
+                            </div>
+ 
+                        </div>
+                    </section>
+
+<section id='Form_Filling' class="testimonials text-center bg-light">
+                        <br>
+                        <div class="row">
+                          <div class="col-lg-6 my-auto showcase-text">
+                              <h2>Access your Profile Page!</h2>
+                              <p class="lead mb-0">You can view all of your rides on your private Profile Page! Your information has been collected from TigerBook, and you can click on any of your rides to access the group pages of those rides!  </p>
+                            </div>
+
+                              <div id=images class="col-sm-6">
+                                  <img src = "{% static 'login/img/My_Group.png' %}" alt="" style="width: 100%; height: 100%;">
+                            </div>
+                            </div>
+                    </section>
+
+    </div>
+
+    <div class="w3-hide-large w3-hide-medium">
+
+
+   <section id='Landing_Page' class="testimonials text-center">
+                        <h3> Easy Login! </h3>
+                        <br>
+                        <div class="row">
+          
+                          
+
+                              
+                            <div id=description class="col-sm-6">
+                              <br> 
+                                <p> If you have not logged in before, use the "Continue With CAS" button to automatically create your profile with TigerTravel! If you have used TigerTravel before, you can simply click on "Find Me Some Travellers" and find your group! </p>
+                            </div>
+                            <div id=images class="col-sm-6">
+                                  <img src = "{% static 'login/img/Landing_Page.png' %}" alt="" style="width: 100%; height: 100%;">
+                            </div>
+                        </div>
+                    </section>
+
+<section id='Form_Filling' class="testimonials text-center bg-light">
+                        <h3> Fill Out Your TigerTravel Form! </h3>
+                        <br>
+                        <div class="row">
+                          <div id=description class="col-sm-6">
+                            <br> 
+                                <p> Finding a group is easy as ever. Fill out the form with a your Origin and Destination, your date of travel, and a departure timeframe that you are comfortable with, and we'll do the rest! You will instantly be notified by email about your group status! </p>
+                            </div>
+
+                              <div id=images class="col-sm-6">
+                                  <img src = "{% static 'login/img/Form_Filling.png' %}" alt="" style="width: 100%; height: 100%;">
+                            </div>
+                                                    </div>
+                    </section>
+
+    <section id='Group_Chat' class="testimonials text-center">
+                        <h3> Look at your Group Page! </h3>
+                        <br>
+                        <div class="row">
+                              
+                            <div id=description class="col-sm-6">
+                              <br>
+                                <p>On your group page you have all the information you need. Use our simple chat feature to communicate with your group members, and if you no longer want to be part of this trip, simply click "Leave Group" and your trip will be deleted! </p>
+                            </div>
+                            <div id=images class="col-sm-6">
+                                  <img src = "{% static 'login/img/Group_Chat.png' %}" alt="" style="width: 100%; height: 100%;">
+                            </div>
+                        </div>
+                    </section>
+
+<section id='Form_Filling' class="testimonials text-center bg-light">
+                        <h3> Access your Profile Page! </h3>
+                        <br>
+                        <div class="row">
+                          <div id=description class="col-sm-6">
+                            <br> 
+                                <p> Have multiple rides? You can view all of your rides on your private Profile Page! Your information has been collected from TigerBook, and you can access all your rides all in one place! You can click on any of your rides to access the group pages of those rides! </p>
+                            </div>
+
+                              <div id=images class="col-sm-6">
+                                  <img src = "{% static 'login/img/My_Group.png' %}" alt="" style="width: 100%; height: 100%;">
+                            </div>
+                            </div>
+                    </section>
+
+    </div>
+
+
+  <!-- About -->
+  <section class="testimonials text-center bg-light">
+    <div class="container">
+      <h2 class="mb-5">Meet the Devs</h2>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+            <img class="img-fluid rounded-circle mb-3" src="{% static 'login/img/don.jpg' %}" alt="">
+            <h5>Donovan Coronado</h5>
+            <p class="font-weight-light mb-0">dtc2@princeton.edu </br> BSE Computer Science '21</p>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+            <img class="img-fluid rounded-circle mb-3" src="{% static 'login/img/shaurya.png' %}" alt="">
+            <h5>Shaurya Garg</h5>
+            <p class="font-weight-light mb-0">shauryag@princeton.edu </br> BSE Computer Science '21</p>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+            <img class="img-fluid rounded-circle mb-3" src="{% static 'login/img/jaehok.png' %}" alt="">
+            <h5>Hanson Kang</h5>
+            <p class="font-weight-light mb-0">jaehok@princeton.edu </br> BSE Computer Science '20</p>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+            <img class="img-fluid rounded-circle mb-3" src="{% static 'login/img/IMG_1878.jpg' %}" alt="">
+            <h5>Bobby Morck</h5>
+            <p class="font-weight-light mb-0">rmorck@princeton.edu </br> BSE Computer Science '21</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Call to Action -->
+  <section class="call-to-action text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h2 class="mb-4">Email us with more destination suggestions!</h2>
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4 mx-auto">
+          <form>
+            <div class="form-row">
+              <div class="col-12 col-md-12">
+                <a class="btn btn-block btn-lg btn-primary" style="background-color:#ff8f00;border:none" href="mailto:tigertravel333@gmail.com?Subject=TigerTravel%20Destination%20Suggestion" target="_top">Email Us Now &nbsp &nbsp &nbsp <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <p class="text-muted small mb-4 mb-lg-0">&copy; TigerTravel 2019. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

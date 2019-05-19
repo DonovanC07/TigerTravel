@@ -1,0 +1,214 @@
+<title>TigerTravel - My Group</title>
+{% extends "tigertravel/base.html" %}
+{% block content %}
+
+
+{% for member in object.members.all %}
+
+{% if user.profile.get_display_id == member.person.profile.get_display_id %}
+
+<div id="prof" class="content-section">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    var name= "{{ user.profile.get_display_id }}";
+    $(function(){
+     $('#prof').find('img').each(function(){
+       var srcpath = $(this).attr('src');
+       srcpath = srcpath.replace('name',name);
+       $(this).attr('src',srcpath);
+     });
+   });
+ </script>
+ <hr>
+ <div class="col-sm-12 w3-hide-small">
+ </br>
+ <h2 class = welcome>
+ Your TigerTravel Group </h2>
+</div>
+
+</br>
+<div class="container bootstrap snippet">
+  <div class="row">
+    <div class="col-sm-3 w3-hide-small"><!--left col-->
+
+      <ul class="list-group">
+        <a class="btn" style="background-color: #ff8f00; color: white; margin: auto; vertical-align: middle;padding: 0 5px; height: 30px;" role="button" href="#" onclick="myFunction()"> &nbspLeave Group &nbsp <i class="fas fa-window-close"></i><form id="delete_request" method="post" action="{% url 'request-delete' member.id %}" >{% csrf_token %}
+                          </form></a> </br>
+        <li class="list-group-item text-muted">Trip Information </li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong><i class="fas fa-route"></i> &nbsp Route</br></strong></span> {{ object.origin }} <i class="fas fa-arrow-right"></i>{{ object.destination }} </li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong><i class="fas fa-calendar-day"></i> &nbsp Date</br></strong></span> {{ object.date|date:"F d, Y" }}</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong><i class="fas fa-clock"></i> &nbsp Time of Departure</br></strong></span> {{ object.start_time }} <i class="fas fa-arrow-right"></i>{{ object.end_time }}</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong><i class="fas fa-user-friends"></i>Members</br></strong></span> <p>{% for member in object.members.all %}<a href="{{member.person.person.tigerlink}}" target="_blank"><img id="{{ member.person.profile.get_display_id }}" style="width: 20px; height: 26px" class="rounded-circle account-img" src="{{member.person.person.piclink}}"></a> &nbsp {{ member.name }} </br>{% endfor %}</p></li></br>
+
+          
+                       
+
+
+        </ul>
+
+
+      </div><!--/col-3-->
+
+      <div class="col-sm-3 w3-hide-large w3-hide-medium"><!--left col-->
+
+        <button class="collapsible" style="font-size: 25px">Your TigerTravel Group</button>
+        <div class="colcontent">
+      <ul class="list-group">
+        
+        <li class="list-group-item text-left"><span class="pull-left"><strong><i class="fas fa-route"></i> &nbsp Route</br></strong></span> {{ object.origin }} <i class="fas fa-arrow-right"></i>{{ object.destination }} </li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong><i class="fas fa-calendar-day"></i> &nbsp Date</br></strong></span> {{ object.date|date:"F d, Y" }}</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong><i class="fas fa-clock"></i> &nbsp Time of Departure</br></strong></span> {{ object.start_time }} <i class="fas fa-arrow-right"></i>{{ object.end_time }}</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong><i class="fas fa-user-friends"></i>Members</br></strong></span> <p>{% for member in object.members.all %}<a href="{{member.person.person.tigerlink}}" target="_blank"><img id="{{ member.person.profile.get_display_id }}" style="width: 20px; height: 26px" class="rounded-circle account-img" src="{{member.person.person.piclink}}"></a> &nbsp {{ member.name }} </br>{% endfor %}</p>
+          
+
+        </ul> </div></br>
+   <script>
+    window.onload = function() {
+        
+        var myDiv = document.getElementById('comments2');
+        var myDiv2 = document.getElementById('comments1');
+        myDiv.scrollTop = myDiv.scrollHeight;
+        myDiv2.scrollTop = myDiv2.scrollHeight;
+      
+                 
+    }   
+    </script> 
+
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+      </div><!--/col-3-->
+
+      <div class="col-sm-9 w3-hide-large w3-hide-medium">
+        <div class="text-center"> <a class="btn" style="background-color: #ff8f00; color: white; margin: auto; vertical-align: middle;padding: 0 5px; height: 30px;" role="button" href="#" onclick="myFunction()">Leave Group &nbsp <i class="fas fa-window-close"></i><form id="delete_request" method="post" action="{% url 'request-delete' member.id %}" >{% csrf_token %}
+                          </form></a></div></br>
+        <div class="row">
+         <div class="col">
+          <h2 class = requests><i class="fas fa-comments"></i> &nbsp Group Chat &nbsp</h2></br>
+          <div id ="comments1" class="scroller_chat" style="height: 230px;">
+            {% for comment in object.comments.all %} 
+
+            {% if comment.author == user.person.name %}
+            <div class ="container" style="background-color: #ff9c45; text-align: right; border:1px solid #d8780a; border-radius: 10px; width: 80%; float: right;">
+             <p style="margin: 0;">{{ comment.text }}</p> <p style="margin: 0;" class="text-muted">{{ comment.sendtime }}</p>
+
+           </div></br>
+
+           {% else %}
+           <div class ="container" style="background-color: #ffc796; text-align: left; border:1px solid #d8780a; border-radius: 10px; width: 80%; float: left;">
+             <p style="margin: 0;">{{ comment.author }}: {{ comment.text }}</p> <p style="margin: 0;" class="text-muted">{{ comment.sendtime }}</p>
+
+
+           </div></br>
+
+           {% endif %}
+         </br></br>
+         {% endfor %}
+       </div>
+     </br>
+     <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="text" style="width: 80%" placeholder="Type your message" maxlength="50" required id="text"></input>
+      <button style="color: #ff8f00; margin-right: 0" type="submit"><i class="fas fa-paper-plane"></i></button>
+    </form>
+
+
+  </div>
+  </div>
+
+</div><!--/col-9-->
+
+<div class="col-sm-9 w3-hide-small">
+
+  <div class="row">
+    <div class="col">
+      <div class="col">
+        <div class="col">
+          <div class="col">
+            <div class="col">
+             <div class="col">
+               <div class="col">
+                <h2 id ="test" class = requests><i class="fas fa-comments"></i> &nbsp Group Chat &nbsp</h2></br>
+                
+                <div class="scroller" id="comments2">
+                                    {% for comment in object.comments.all %} 
+
+                  {% if comment.author == user.person.name %}
+                  <div class ="container" style="background-color: #ff9c45; text-align: right; border:1px solid #d8780a; border-radius: 10px; width: 80%; float: right;">
+                   <p style="margin: 0;">{{ comment.text }}</p> <p style="margin: 0;" class="text-muted">{{ comment.sendtime }}</p>
+
+                 </div></br>
+
+                 {% else %}
+                 <div class ="container" style="background-color: #ffc796; text-align: left; border:1px solid #d8780a; border-radius: 10px; width: 80%; float: left;">
+                   <p style="margin: 0;">{{ comment.author }}: {{ comment.text }}</p> <p style="margin: 0;" class="text-muted">{{ comment.sendtime }}</p>
+
+
+                 </div></br>
+
+                 {% endif %}
+               </br></br>
+               {% endfor %}
+             </div>
+           </br>
+           <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="text" style="width: 90%" placeholder="Type your message" maxlength="50" required id="text"></input>
+            <button style="color: #ff8f00; margin-right: 0" type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+</div><!--/col-9-->
+</div><!--/row-->
+
+
+
+<script>
+  function myFunction() {
+  var txt;
+  if (confirm("Are you sure you want to delete this request?")) {
+    document.getElementById("delete_request").submit();
+  } else {
+    
+  }
+}
+                        </script>
+
+
+
+
+
+{% endif %}
+{% endfor %}
+
+
+<script type="text/javascript">
+    document.getElementById('profile').classList.add('active');
+  </script>
+
+{% endblock content %}
